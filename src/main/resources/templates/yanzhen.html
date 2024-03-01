@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../static/js/jquery-3.6.0.js"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+             $("#but").click(function () {
+
+                 $.ajax({
+                     url: "/yanzheng",
+                 })
+
+                 var i = 60;
+                 var m = setInterval(a, 1000)
+                 function a() {
+                     if (i <= 0) {
+                         $("#but").attr("disabled", false);
+                         clearInterval(m);
+
+                     } else {
+                         i--;
+                         $("#but").attr("disabled", true);
+                         $("#but").val("还有"+i+"秒可继续操作");
+                     }
+                 }
+             })
+
+
+        }
+
+
+        )
+
+    </script>
+</head>
+
+
+<body>
+   <form action="/yan">
+       <input type="text" name="code">
+       <input type="button" id="but" value="获取验证码"></button>
+       <input type="submit" value="验证">
+   </form>
+
+
+
+</body>
+</html>

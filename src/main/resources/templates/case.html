@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="renderer" content="webkit" />
+    <meta name="screen-orientation" content="portrait" />
+    <meta name="x5-orientation" content="portrait" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/case.css"/>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
+
+    <!--[if IE]>
+    <script src="https://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <style>
+        *{
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+        body{
+            font-family: Helvetica;
+            -webkit-font-smoothing: antialiased;
+            background: rgba( 71, 147, 227, 1);
+        }
+        h2{
+            text-align: center;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+            padding: 30px 0;
+        }
+
+        /* Table Styles */
+
+        .table-wrapper{
+            margin: 10px 70px 70px;
+            box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+        }
+
+        .fl-table {
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: normal;
+            border: none;
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 100%;
+            white-space: nowrap;
+            background-color: white;
+        }
+
+        .fl-table td, .fl-table th {
+            text-align: center;
+            padding: 8px;
+        }
+
+        .fl-table td {
+            border-right: 1px solid #f8f8f8;
+            font-size: 12px;
+        }
+
+        .fl-table thead th {
+            color: #ffffff;
+            background: #4FC3A1;
+        }
+
+
+        .fl-table thead th:nth-child(odd) {
+            color: #ffffff;
+            background: #324960;
+        }
+
+        .fl-table tr:nth-child(even) {
+            background: #F8F8F8;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 767px) {
+            .fl-table {
+                display: block;
+                width: 100%;
+            }
+            .table-wrapper:before{
+                content: "Scroll horizontally >";
+                display: block;
+                text-align: right;
+                font-size: 11px;
+                color: white;
+                padding: 0 0 10px;
+            }
+            .fl-table thead, .fl-table tbody, .fl-table thead th {
+                display: block;
+            }
+            .fl-table thead th:last-child{
+                border-bottom: none;
+            }
+            .fl-table thead {
+                float: left;
+            }
+            .fl-table tbody {
+                width: auto;
+                position: relative;
+                overflow-x: auto;
+            }
+            .fl-table td, .fl-table th {
+                padding: 20px .625em .625em .625em;
+                height: 60px;
+                vertical-align: middle;
+                box-sizing: border-box;
+                overflow-x: hidden;
+                overflow-y: auto;
+                width: 120px;
+                font-size: 13px;
+                text-overflow: ellipsis;
+            }
+            .fl-table thead th {
+                text-align: left;
+                border-bottom: 1px solid #f7f7f9;
+            }
+            .fl-table tbody tr {
+                display: table-cell;
+            }
+            .fl-table tbody tr:nth-child(odd) {
+                background: none;
+            }
+            .fl-table tr:nth-child(even) {
+                background: transparent;
+            }
+            .fl-table tr td:nth-child(odd) {
+                background: #F8F8F8;
+                border-right: 1px solid #E6E4E4;
+            }
+            .fl-table tr td:nth-child(even) {
+                border-right: 1px solid #E6E4E4;
+            }
+            .fl-table tbody td {
+                display: block;
+                text-align: center;
+            }
+        }
+    </style>
+
+</head>
+<body>
+<div class="top" th:fragment="aw">
+    <a href="index.html" class="logo fl"><img src="img/logo.png"/></a>
+    <ul class="navbar clearfifx">
+        <li><a href="index.html">网站首页</a></li>
+        <li><a href="">品牌简介</a></li>
+        <li><a href="case.html">产品展示</a></li>
+        <li><a href="">商务合作</a></li>
+        <li><a href="">店面展示</a></li>
+        <li><a href="/m">反馈</a></li>
+        <li><a href="/tologin">登录</a></li>
+        <div sec:authorize="hasAnyRole('vip')">
+            <li><a href="/logout">登出</a></li>
+            <li><a href="/car">购物车</a></li>
+            <li><a href="/return">退款</a></li>
+        </div>
+    </ul>
+    <p class="fr"><img src="img/tel.png"/>xxx</p>
+
+</div>
+<div class="neibanner">
+    <img src="img/banner.jpg"/>
+</div>
+<div class="breadcrumb">
+    <div class="w1240 clearfix">
+        <p class="fl"><img src="img/home.png"><span>当前位置：</span><span>首页 </span><i>&gt;</i> <span>新闻中心</span></p>
+        <a href="" class="fr"><img src="img/house.png">HOME</a>
+    </div>
+</div>
+
+
+<div class="search d6">
+    <form  method="post" >
+        <input type="text" id="keyword" placeholder="搜索从这里开始...">
+        <input type="button" id="sou" value="搜索" >
+        <button ></button>
+    </form>
+</div>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>商品</th>
+            <th>商品详情</th>
+            <th>价格</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody id="tr">
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript" src="/js/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+ $(function() {
+
+$("#sou").click(function () {
+    $.ajax({
+          type: 'post',
+          data: {
+
+            'keyword': $("#keyword").val()},
+          url: '/sou',
+          dataType: "json",
+          success: function (data) {
+              $("#tr").empty();
+            $.each(data,function (i,n) {
+                $("#tr").append(
+                    "<tr>"+
+                    "<td><img src='"+n.img+"'/></td>"+
+                    "<td>"+n.title+"</td>"+
+                    "<td>"+n.price+"</td>"+
+                    "<td><input type='text'  name='good'   id='text"+i+"'></td>"+
+                    "<td><input type='submit'  value='添加' id='btn"+i+"'></td>"+
+                    "</tr>"
+                );
+                // $("#"+i+"").append(
+                //     "<td>"+n.title+"</td>"+
+                //     "<td>"+n.price+"</td>"+
+                //     "<td>"+
+                //     "<input type='text' name ='number'>"+
+                //     "</td>"+
+                //     "<td>"+
+                //     "<input type='submit' value='添加' id='btn"+i+"'>"+
+                //     "</td>"
+                // )
+                $("#btn"+i+"").click(function () {
+                    $.ajax(
+                        {
+                           type: 'post',
+                           url: "/jiegou",
+                           data: {
+                               "img": n.img,
+                               "title": n.title,
+                               "price": n.price,
+                               "number": $("#text"+i+"").val()
+                           }
+                        }
+                    )
+                 alert("添加成功")
+                })
+
+            }
+
+            );
+        },
+    })
+})
+
+
+})
+</script>
+
+</body>
+</html>

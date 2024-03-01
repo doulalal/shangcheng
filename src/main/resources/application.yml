@@ -1,0 +1,37 @@
+# 应用名称
+spring:
+  application:
+    name: provider
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/couldtest?useUnicode=true&characterEncoding=UTF-8
+    password: qwertyuiop...
+    username: root
+  redis:
+    host: 124.71.227.197
+    port: 6379
+    password: xianglu
+  mail:
+    host: smtp.qq.com
+    username: 2362910750@qq.com
+    password: eijfebaucnyleaih
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
+
+  resources:
+    static-locations: classpath:/static/,classpath:/templates/
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+eureka:
+                   client:
+                     service-url:
+                       defaultZone: http://eureka7001.com:7001/eureka/
+                   instance:
+                     instance-id: spring-pro-8080
+
+
+#    lease-renewal-interval-in-seconds: 向服务端发送心跳时间间隔
+#    lease-expiration-duration-in-seconds: 距离最后一次接收心跳的时间，超过就注销

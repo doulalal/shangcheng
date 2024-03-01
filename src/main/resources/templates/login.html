@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en_US" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>login/signup form animation</title>
+
+    <link rel="stylesheet" href="css/login.css" type="text/css" />
+
+</head>
+<body>
+
+<div class="form-structor">
+
+    <form class="signup" th:action="@{'/register'}" method="post">
+        <h2 class="form-title" id="signup"><span>或</span>注册</h2>
+        <div class="form-holder">
+            <input type="text" class="input" name="username" placeholder="用户名" />
+            <input type="password" class="input" name="password" placeholder="密码" />
+        </div>
+        <input type="submit" class="submit-btn">注册</input>
+    </form>
+
+    <form class="login slide-up" action="/tologin" method="post">
+        <div class="center">
+            <h2 class="form-title" id="login"><span>或</span>登录</h2>
+            <div class="form-holder">
+                <input type="text" class="input"  name="username" placeholder="用户名" />
+                <input type="password" class="input" name="password" placeholder="密码" />
+            </div>
+            <input type="submit" class="submit-btn">登录</button>
+        </div>
+    </form>
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
